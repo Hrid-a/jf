@@ -1,8 +1,6 @@
-import SignUp from "./components/SignUp";
-import Layout from "./components/Layout";
-import Error from "./components/Error";
-import store from "./redux/store";
 import { Provider } from "react-redux";
+import store from "./redux/store";
+import Layout from "./components/Layout";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { lazy, Suspense } from "react";
 
@@ -10,6 +8,8 @@ const Browse = lazy(()=> import("./components/Browse"));
 const FavoriteMovies = lazy(()=> import("./components/FavoriteMovies"));
 const MoviePage = lazy(()=> import("./components/MoviePage"));
 const SignIn = lazy(()=> import("./components/SignIn"));
+const SignUp = lazy(()=> import("./components/SignUp"));
+const Error = lazy(()=> import('./components/Error'));
 
 
 const router = createBrowserRouter([{
@@ -18,7 +18,7 @@ const router = createBrowserRouter([{
   children: [
     {
       path:"/",
-      element:<SignUp/>    
+      element:<Suspense><SignUp/></Suspense>    
     },
     {
       path:"/login",
@@ -34,10 +34,10 @@ const router = createBrowserRouter([{
     },
     {
       path:"/favourite",
-      element: <Suspense><FavoriteMovies /></Suspense>
+      element: <Suspense ><FavoriteMovies /></Suspense>
     }
   ], 
-  errorElement: <Error />
+  errorElement: <Suspense><Error /></Suspense>
 }])
 
 

@@ -2,10 +2,12 @@ import { TbWorld, TbCaretDown } from "react-icons/tb";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { handleLayout } from "../redux/layoutSlice";
-import UserHeader from "./UserHeader";
 import { LANGUAGES } from "../helpers/constant";
 import { changeLang } from "../redux/langSlice";
 import {SignUp_LANG_ARRAY} from "../helpers/constant";
+// import UserHeader from "./UserHeader";
+import { Suspense, lazy } from "react";
+const UserHeader = lazy(()=> import("./UserHeader"));
 
 const Header = () => {
   
@@ -39,7 +41,7 @@ const Header = () => {
             {SignUp_LANG_ARRAY[lang]?.["hButton"]}
           </Link>
         </div>}
-        {user &&  <UserHeader data = {{name:user.displayName, img: user.photoURL }} />}
+        {user &&  <Suspense><UserHeader data = {{name:user.displayName, img: user.photoURL }} /></Suspense>}
       </header>
     </div>
   )
