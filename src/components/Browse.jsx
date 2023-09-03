@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { handleLayout } from "../redux/layoutSlice"
 import usePopularVideos from "../hooks/usePopularVideos"
-import useNowPlayingMovies from "../hooks/useNowPlayingmovies"
+import useNowPlayingMovies from "../hooks/useNowPlayingMovies"
 import useTopRatedMovies from "../hooks/useTopRatedMovies"
 import useUpComingMovies from "../hooks/useUpComingMovies";
 import useTrendingMovies from "../hooks/useTrendingMovies";
