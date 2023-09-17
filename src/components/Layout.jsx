@@ -2,7 +2,7 @@ import Header from './Header';
 import { useEffect } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { addUser, removeUser} from "../redux/userSlice";
+import { addUser, removeUser } from "../redux/userSlice";
 import { showLayout } from '../redux/layoutSlice';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../config/firebase';
@@ -10,10 +10,11 @@ import { auth } from '../config/firebase';
 const Layout = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    
-    useEffect(()=> {
+
+    useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
+
                 const { uid, email, displayName, photoURL } = user;
                 dispatch(
                     addUser({
@@ -31,14 +32,14 @@ const Layout = () => {
             }
         });
 
-        return () => {unsubscribe()};
-        
+        return () => { unsubscribe() };
+
     }, [])
 
     return (
         <>
-            <Header/>
-            <Outlet/>
+            <Header />
+            <Outlet />
         </>
     )
 }

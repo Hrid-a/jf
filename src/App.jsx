@@ -10,11 +10,13 @@ const MoviePage = lazy(() => import("./components/MoviePage"));
 const SignIn = lazy(() => import("./components/SignIn"));
 const SignUp = lazy(() => import("./components/SignUp"));
 const Error = lazy(() => import('./components/Error'));
+const SearchPage = lazy(() => import("./components/SearchPage"));
+const Settings = lazy(() => import("./components/Settings"));
 
 
 const router = createBrowserRouter([{
   path: "/",
-  element: <Suspense> <Layout /> </Suspense> ,
+  element: <Suspense> <Layout /> </Suspense>,
   children: [
     {
       path: "/",
@@ -35,6 +37,14 @@ const router = createBrowserRouter([{
     {
       path: "/favourite",
       element: <Suspense ><FavoriteMovies /></Suspense>
+    },
+    {
+      path: "/search",
+      element: <Suspense><SearchPage /></Suspense>
+    },
+    {
+      path: "/settings",
+      element: <Suspense><Settings /></Suspense>
     }
   ],
   errorElement: <Suspense><Error /></Suspense>

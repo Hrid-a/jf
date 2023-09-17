@@ -1,19 +1,31 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import VideoBg from "./VideoBg";
 import VideoTitle from "./VideoTitle";
 import TrailerShimer from "../shimmerUi/TrailerShimer";
+import { useEffect, useState } from "react";
 
 const HeroSection = () => {
-    const movies = useSelector(store => store.movies.trendingMovies);
+  const movies = useSelector(store => store.movies.trendingMovies);
+  const [mainMovie, setMainMovie] = useState(null)
 
-    if (!movies) return <TrailerShimer />;
-    const mainMovie = movies[Math.floor(Math.random() * movies.length)];
-    const { original_title, overview, id } = mainMovie;
+  useEffect(() => {
+    getMainMovie(movies)
+  }, [movies])
+
+  const getMainMovie = () => {
+    const movie = movies?.[Math.floor(Math.random() * movies.length)];
+    setMainMovie(movie);
+  }
+  if (!movies) return <TrailerShimer />;
+
+  if (!mainMovie) return;
+  const { original_title, overview, id } = mainMovie;
+
 
   return (
     <>
-        <VideoBg id= {id}/>
-        <VideoTitle title = {original_title} desc = {overview}/>
+      <VideoBg id={id} />
+      <VideoTitle title={original_title} desc={overview} />
     </>
   )
 }

@@ -3,6 +3,7 @@ import userReducer from "./userSlice";
 import handleReducer from "./layoutSlice";
 import videosReducer from "./VideosSlice";
 import langReducer from "./langSlice";
+import gptReducer from "./gptSlice";
 
 const store = configureStore({
     reducer: {
@@ -10,7 +11,8 @@ const store = configureStore({
         layout: handleReducer,
         movies: videosReducer,
         lang: langReducer,
+        gptMovies: gptReducer,
     }
 });
 
-export default  store;
+export default store;

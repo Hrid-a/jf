@@ -4,19 +4,18 @@ import { Link } from "react-router-dom";
 import { handleLayout } from "../redux/layoutSlice";
 import { LANGUAGES } from "../helpers/constant";
 import { changeLang } from "../redux/langSlice";
-import {SignUp_LANG_ARRAY} from "../helpers/constant";
-// import UserHeader from "./UserHeader";
+import { SignUp_LANG_ARRAY } from "../helpers/constant";
 import { Suspense, lazy } from "react";
-const UserHeader = lazy(()=> import("./UserHeader"));
+const UserHeader = lazy(() => import("./UserHeader"));
 
 const Header = () => {
-  
+
   const dispatch = useDispatch()
   const clicked = useSelector(store => store.layout);
   const user = useSelector(store => store.user);
-  const {lang} = useSelector(store => store.lang);
+  const { lang } = useSelector(store => store.lang);
 
-  const handleChange = (e)=> {
+  const handleChange = (e) => {
     const lang = e.target.value;
     console.log(lang);
     dispatch(changeLang(lang))
@@ -41,7 +40,7 @@ const Header = () => {
             {SignUp_LANG_ARRAY[lang]?.["hButton"]}
           </Link>
         </div>}
-        {user &&  <Suspense><UserHeader data = {{name:user.displayName, img: user.photoURL }} /></Suspense>}
+        {user && <Suspense><UserHeader /></Suspense>}
       </header>
     </div>
   )

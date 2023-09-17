@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+.custom::-webkit-scrollbar-track {
+    background-color: black;
+}
+
+.custom::-webkit-scrollbar-thumb {
+    background-color: #9ca3af;
+    border-radius: 10px;
+
+}
+
+.custom::-webkit-scrollbar {
+    width: 6px;
+    height: 8px;
+}
+
+.input-style {
+    @apply h-full w-full rounded-[7px] border border-gray-200 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-gray-100 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-gray-200 placeholder-shown:border-t-gray-200 focus:border-2 focus:border-red-500 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-gray-50;
+}
