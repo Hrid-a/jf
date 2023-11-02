@@ -4,19 +4,19 @@ import { request } from "../helpers/axios";
 import { addTrendingMovies } from "../redux/VideosSlice";
 import handleError from "../helpers/handleError";
 
-export default function useTrendingMovies(){
-    const {trendingMovies} = useSelector(store => store.movies);
+export default function useTrendingMovies(endpoints = "day") {
+    const { trendingMovies } = useSelector(store => store.movies);
     const dispatch = useDispatch();
 
-    const getData = async()=> {
+    const getData = async () => {
         try {
-            const {data: {results}} = await request.get("/trending/movie/day?")
-            dispatch(addTrendingMovies(results));    
-        }catch(err){
+            const { data: { results } } = await request.get(`/trending/movie/${endpoints}`)
+            dispatch(addTrendingMovies(results));
+        } catch (err) {
             handleError(err);
         }
     }
-    useEffect(()=> {
+    useEffect(() => {
         !trendingMovies && getData();
     }, [])
 }

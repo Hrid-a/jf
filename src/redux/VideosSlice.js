@@ -12,6 +12,7 @@ const videosSlice = createSlice({
         trailerVideo: null,
         genreMovies: null,
         items: {},
+        endpoints: "day"
     },
     reducers: {
         addPopularVideos: (state, action) => {
@@ -38,9 +39,11 @@ const videosSlice = createSlice({
         addCashe: (state, action) => {
             Object.assign(state.items, action.payload);
         },
-
+        changeEndPoint: (state, action) => {
+            state.endpoints = action.paylod;
+        }
     }
 });
 
-export const { addCashe, addGenreMovies, addTrailerVideo, addPopularVideos, addNowPlayingMovies, addTopRatedMovies, addUpComingMovies, addTrendingMovies } = videosSlice.actions;
+export const { changeEndPoint, addCashe, addGenreMovies, addTrailerVideo, addPopularVideos, addNowPlayingMovies, addTopRatedMovies, addUpComingMovies, addTrendingMovies } = videosSlice.actions;
 export default videosSlice.reducer;

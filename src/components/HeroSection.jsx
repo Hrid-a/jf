@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import VideoBg from "./VideoBg";
 import VideoTitle from "./VideoTitle";
 import TrailerShimer from "../shimmerUi/TrailerShimer";
@@ -13,7 +13,7 @@ const HeroSection = () => {
   }, [movies])
 
   const getMainMovie = () => {
-    const movie = movies?.[Math.floor(Math.random() * movies.length)];
+    const movie = movies?.[0];
     setMainMovie(movie);
   }
   if (!movies) return <TrailerShimer />;
